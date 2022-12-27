@@ -1,0 +1,1 @@
+const gitName= document.getElementById('name')

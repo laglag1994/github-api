@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500&family=Epilogue:wght@500&family=League+Spartan:wght@900&family=Noto+Sans+Arabic:wght@500&display=swap');
+
 * {
     box-sizing: border-box;
 
@@ -11,6 +13,8 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #d2c2b9;
+    font-family: 'Archivo', sans-serif;
+
 }
 
 .main-container {
@@ -33,20 +37,27 @@ header {
 
 header input {
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     position: relative;
     height: 1.2rem;
+    background-color: #a6b0a1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 header button {
     position:absolute;
     border: none;
-    background-color: transparent;
-    color: #e4bd78;
+    background-color: #a6b0a1;
+    color: #3b4940;
     cursor: pointer;
-
+    height: 1.2rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 
 }
+    
+
 
 .picture {
     display: flex;
@@ -58,4 +69,18 @@ header button {
 
 .picture img{
     border-radius: 50%;
+    border: #e4bd78 4px double;
+    height: 150px;
+}
+
+.picture h1{
+    font-size: x-large;
+}
+
+
+.bio p{
+    padding: 5px 50px;
+    padding-bottom: 15px;
+    font-weight:100;
+    color:#7f6c67 ;
 }
