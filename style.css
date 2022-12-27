@@ -17,7 +17,7 @@ body {
 
 }
 
-.main-container {
+.user-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,6 +33,7 @@ body {
 
 header {
     padding-top: 30px;
+    padding-right: 30px;
 }
 
 header input {

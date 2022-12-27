@@ -3,12 +3,14 @@ const gitPic=document.getElementById('pic');
 const gitBio=document.getElementById('bio');
 const gitBtnSearch=document.getElementById('search');
 const gitSearchTerm=document.getElementById('search-term')
-const gitContainer=document.getElementById('main-container')
 
 
-gitContainer.addEventListener('submit',function(e)  {
-    e.preventDefult()
-    gitBtnSearch.value
-    console(gitBtnSearch)
+async function fetchMealById(gitSearchTerm) {
+    const idResp = await fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + gitSearchTerm);
+    const idname = await idResp.json();
+    const name = idname.meals[0]
+    return name
 
-})
+    alert(name)
+
+}
