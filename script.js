@@ -1,10 +1,6 @@
-const APIURL = 'https://api.github.com/users/'
-const gitName= document.getElementById('name');
-const gitPic=document.getElementById('pic');
-const gitBio=document.getElementById('bio');
-const gitBtnSearch=document.getElementById('search');
-const gitSearchTerm=document.getElementById('search-term')
-const gitForm=document.getElementById("user-form")
+const main = document.getElementById('main')
+const gitForm = document.getElementById('form')
+const gitSearch = document.getElementById('search')
 
 
 
@@ -12,13 +8,13 @@ gitUser();
 gitInfo();
 async function gitUser(name) {
 
-    try{
+    try {
         const data = await fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + name)
 
         gitInfo(data)
-        
-    }catch{
-        if(err.response.status == 404) {
+
+    } catch {
+        if (err.response.status == 404) {
             createErrorCard('No profile with this username')
         }
     }
@@ -26,14 +22,20 @@ async function gitUser(name) {
 
 }
 
-function gitInfo(data){
-    const user =document.createElement('div')
-    user.classList.add('meal')
-    user.innerHTML=`
-    <div>
+const data = undefined;
 
+function gitInfo(data) {
+    
+    
+    const user = document.createElement('div')
+    user.classList.add('user')
+    user.innerHTML = `
+        <div>
             <div class="picture">
-                <img src="${data.avatar_url}">
+                <img
+                 src="${data.avatar_url}"
+                 alt="${data.login}"
+                 />
 
                 <h1 ${data.login}</h1>
             </div>
@@ -41,9 +43,22 @@ function gitInfo(data){
 
             <div class="bio" id="bio">
                 <p>${data.bio}.</p>
-            
-
+             </div>
         </div>
+
     `
-console.log(data)
+    console.log(user)
 }
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const user = search.value
+
+    if (user) {
+        gitUser(user)
+
+        search.value = ''
+    }
+})
