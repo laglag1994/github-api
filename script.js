@@ -1,4 +1,3 @@
-const main = document.getElementById('main')
 const gitForm = document.getElementById('form')
 const gitSearch = document.getElementById('search')
 
@@ -6,23 +5,24 @@ const gitSearch = document.getElementById('search')
 
 gitUser();
 gitInfo();
+
+
+
 async function gitUser(name) {
+    try{
+        const data = await fetch("https://api.github.com/users/" + name)
+        
+        gitInfo(await data.json())
 
-    try {
-        const data = await fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + name)
 
-        gitInfo(data)
-
-    } catch {
-        if (err.response.status == 404) {
-            createErrorCard('No profile with this username')
-        }
+    }catch (error){
+        if(error.response.status==404)
+        gitErr('username not found')
     }
 
 
 }
 
-const data = undefined;
 
 function gitInfo(data) {
     
@@ -30,7 +30,7 @@ function gitInfo(data) {
     const user = document.createElement('div')
     user.classList.add('user')
     user.innerHTML = `
-        <div>
+
             <div class="picture">
                 <img
                  src="${data.avatar_url}"
@@ -41,24 +41,34 @@ function gitInfo(data) {
             </div>
 
 
-            <div class="bio" id="bio">
+            <div class="bio" >
                 <p>${data.bio}.</p>
              </div>
-        </div>
 
     `
-    console.log(user)
+    console.log(data)
 }
+
+
+
+function gitErr(errMsg){
+    errMsg.innerHTML=`<h2>${errMsg}</h3>`
+}
+
+
+
+
+
 
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    const user = search.value
+    const user = gitSearch.value
 
     if (user) {
         gitUser(user)
 
-        search.value = ''
+        gitSearch.value = ''
     }
 })

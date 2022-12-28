@@ -58,7 +58,9 @@ header button {
 
 }
     
-
+.user-card{
+    height: 70vh
+}
 
 .picture {
     display: flex;
