@@ -17,13 +17,13 @@ body {
 
 }
 
-.user-form {
+.container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     width: 500px;
-    height: max-content;
+    height: 400px;
     background-color: #ebe4de;
     margin-top: 50px;
     gap: 30px;

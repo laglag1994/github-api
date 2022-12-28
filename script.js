@@ -1,5 +1,6 @@
 const gitForm = document.getElementById('form')
 const gitSearch = document.getElementById('search')
+const gitCard=document.getElementById('card')
 
 
 
@@ -9,18 +10,29 @@ gitInfo();
 
 
 async function gitUser(name) {
-    try{
         const data = await fetch("https://api.github.com/users/" + name)
         
         gitInfo(await data.json())
 
-
-    }catch (error){
-        if(error.response.status==404)
-        gitErr('username not found')
-    }
+}
 
 
+
+function gitInfo(user) {
+    const cardHTML = `
+        <div class="card">
+            <div>
+                <img class="picture" src="${user.avatar_url}" alt="${user.name}" />
+            </div>
+            <div class="user-info">
+                <h2>${user.name}</h2>
+                <p>${user.bio}</p>
+                
+            </div>
+        </div>
+    `;
+
+    gitCard.innerHTML = cardHTML;
 }
 
 
@@ -28,15 +40,14 @@ function gitInfo(data) {
     
     
     const user = document.createElement('div')
-    user.classList.add('user')
-    user.innerHTML = `
+    user.classList.add('card')
+    gitCard=user.innerHTML = `
 
             <div class="picture">
                 <img
                  src="${data.avatar_url}"
                  alt="${data.login}"
                  />
-
                 <h1 ${data.login}</h1>
             </div>
 
@@ -46,14 +57,14 @@ function gitInfo(data) {
              </div>
 
     `
-    console.log(data)
+    console.log(gitCard)
 }
 
 
 
-function gitErr(errMsg){
-    errMsg.innerHTML=`<h2>${errMsg}</h3>`
-}
+// function gitErr(errMsg){
+//     errMsg.innerHTML=`<h2>${errMsg}</h3>`
+// }
 
 
 
