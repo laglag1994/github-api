@@ -86,4 +86,7 @@ header button {
     padding-bottom: 15px;
     font-weight:100;
     color:#7f6c67 ;
+    text-align: center;
+    padding-top: 20px;
+    font-size: large;
 }
